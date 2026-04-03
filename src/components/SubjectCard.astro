@@ -1,1 +1,106 @@
+---
+interface Props {
+  subject: string;
+  icon: string;
+  chapters: string[];
+  outcomes: string[];
+  color?: 'blue' | 'green' | 'amber' | 'red' | 'purple';
+  delay?: string;
+}
 
+const {
+  subject,
+  icon,
+  chapters,
+  outcomes,
+  color = 'green',
+  delay = '0',
+} = Astro.props;
+
+const colorMap: Record<string, { bg: string; text: string; tag: string; tagText: string; border: string }> = {
+  green: {
+    bg: 'bg-sage-faint',
+    text: 'text-sage-dark',
+    tag: 'bg-sage-pale',
+    tagText: 'text-sage-dark',
+    border: 'border-sage/30',
+  },
+  blue: {
+    bg: 'bg-blue-50',
+    text: 'text-blue-700',
+    tag: 'bg-blue-100',
+    tagText: 'text-blue-700',
+    border: 'border-blue-200',
+  },
+  amber: {
+    bg: 'bg-amber-50',
+    text: 'text-amber-700',
+    tag: 'bg-amber-100',
+    tagText: 'text-amber-700',
+    border: 'border-amber-200',
+  },
+  red: {
+    bg: 'bg-red-50',
+    text: 'text-red-700',
+    tag: 'bg-red-100',
+    tagText: 'text-red-700',
+    border: 'border-red-200',
+  },
+  purple: {
+    bg: 'bg-purple-50',
+    text: 'text-purple-700',
+    tag: 'bg-purple-100',
+    tagText: 'text-purple-700',
+    border: 'border-purple-200',
+  },
+};
+
+const c = colorMap[color];
+---
+
+<div
+  class={`bg-white rounded-2xl border ${c.border} p-7 card-lift group relative overflow-hidden`}
+  data-animate
+  data-delay={delay}
+>
+  <!-- Top accent bar -->
+  <div class={`absolute top-0 left-0 right-0 h-1 ${color === 'green' ? 'bg-sage-dark' : color === 'blue' ? 'bg-blue-500' : color === 'amber' ? 'bg-amber-500' : color === 'red' ? 'bg-red-500' : 'bg-purple-500'} rounded-t-2xl`}></div>
+
+  <!-- Subject Header -->
+  <div class="flex items-center gap-3 mb-5 pt-2">
+    <div class={`w-12 h-12 rounded-xl ${c.bg} flex items-center justify-center text-2xl`}>
+      {icon}
+    </div>
+    <h3 class={`font-playfair font-700 text-2xl ${c.text}`}>{subject}</h3>
+  </div>
+
+  <!-- Chapters as tags -->
+  <div class="mb-5">
+    <p class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-widest mb-3">Chapters Covered</p>
+    <div class="flex flex-wrap gap-2">
+      {chapters.map(ch => (
+        <span class={`${c.tag} ${c.tagText} font-grotesk text-xs font-500 px-3 py-1.5 rounded-full`}>{ch}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="border-t border-cream-dark my-5"></div>
+
+  <!-- Outcomes -->
+  <div>
+    <p class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-widest mb-3">What You'll Master</p>
+    <ul class="space-y-2">
+      {outcomes.map(outcome => (
+        <li class="flex items-start gap-2.5 font-dm text-sm text-charcoal-light">
+          <span class={`w-4 h-4 rounded-full ${c.bg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+            <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+              <path d="M2 5L4.5 7.5L8 2.5" stroke={color === 'green' ? '#4A7C59' : color === 'blue' ? '#1d4ed8' : color === 'amber' ? '#b45309' : color === 'red' ? '#b91c1c' : '#7c3aed'} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          {outcome}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
