@@ -1,1 +1,75 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  iconPath?: string;
+  size?: 'sm' | 'md' | 'lg' | 'wide' | 'tall';
+  variant?: 'default' | 'dark' | 'sage' | 'white';
+  delay?: string;
+}
 
+const {
+  title,
+  body,
+  iconPath,
+  size = 'md',
+  variant = 'default',
+  delay = '0',
+} = Astro.props;
+
+const sizeClasses: Record<string, string> = {
+  sm: 'col-span-1 row-span-1',
+  md: 'col-span-1 row-span-1',
+  lg: 'col-span-2 row-span-1',
+  wide: 'col-span-2 row-span-1',
+  tall: 'col-span-1 row-span-2',
+};
+
+const variantClasses: Record<string, string> = {
+  default: 'bg-white border border-cream-dark',
+  dark: 'bg-charcoal text-white',
+  sage: 'bg-sage-dark text-white',
+  white: 'bg-cream border border-cream-dark',
+};
+
+const headingColor: Record<string, string> = {
+  default: 'text-charcoal',
+  dark: 'text-white',
+  sage: 'text-white',
+  white: 'text-charcoal',
+};
+
+const bodyColor: Record<string, string> = {
+  default: 'text-charcoal-muted',
+  dark: 'text-white/70',
+  sage: 'text-white/80',
+  white: 'text-charcoal-muted',
+};
+---
+
+<div
+  class={`${sizeClasses[size]} ${variantClasses[variant]} rounded-2xl p-6 lg:p-7 card-lift relative overflow-hidden group`}
+  data-animate
+  data-delay={delay}
+>
+  <!-- Decorative background shape -->
+  <div class="absolute -bottom-8 -right-8 w-28 h-28 rounded-full opacity-5 bg-sage-dark group-hover:opacity-10 transition-opacity duration-500"></div>
+
+  {iconPath && (
+    <div class={`w-11 h-11 rounded-xl mb-4 flex items-center justify-center ${variant === 'default' || variant === 'white' ? 'bg-sage-faint' : 'bg-white/15'}`}>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={variant === 'default' || variant === 'white' ? '#4A7C59' : 'white'} stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <Fragment set:html={iconPath} />
+      </svg>
+    </div>
+  )}
+
+  <h3 class={`font-playfair font-700 text-lg leading-snug mb-2 ${headingColor[variant]}`}>
+    {title}
+  </h3>
+  <p class={`font-dm text-sm leading-relaxed ${bodyColor[variant]}`}>
+    {body}
+  </p>
+
+  <!-- Hover accent line -->
+  <div class={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500 rounded-b-2xl ${variant === 'sage' || variant === 'dark' ? 'bg-white/40' : 'bg-sage-dark'}`}></div>
+</div>
