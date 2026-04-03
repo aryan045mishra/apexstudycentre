@@ -1,1 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset & Globals ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #F5F0E8;
+  color: #2C2C2C;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Scroll Animation System ── */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-animate="fade"] {
+  transform: translateY(0);
+}
+
+[data-animate="slide-left"] {
+  transform: translateX(-28px);
+}
+
+[data-animate="slide-right"] {
+  transform: translateX(28px);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0);
+}
+
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.3s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+[data-delay="500"] { transition-delay: 0.5s; }
+[data-delay="600"] { transition-delay: 0.6s; }
+[data-delay="700"] { transition-delay: 0.7s; }
+[data-delay="800"] { transition-delay: 0.8s; }
+
+/* ── Typography Utilities ── */
+.font-playfair { font-family: 'Playfair Display', Georgia, serif; }
+.font-dm { font-family: 'DM Sans', sans-serif; }
+.font-grotesk { font-family: 'Space Grotesk', sans-serif; }
+
+/* ── Card Hover Lift ── */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(44, 44, 44, 0.13);
+}
+
+/* ── Nav Link Underline Animation ── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #4A7C59;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── Grain Texture ── */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.grain-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Section Wave Clip ── */
+.wave-top {
+  clip-path: ellipse(120% 100% at 50% 100%);
+}
+.wave-bottom {
+  clip-path: ellipse(120% 100% at 50% 0%);
+}
+
+/* ── Diagonal Section ── */
+.diagonal-section {
+  clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
+}
+
+/* ── Bento Grid ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+/* ── Pulsing dot animation ── */
+@keyframes ping-slow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.dot-pulse {
+  animation: ping-slow 2s ease-in-out infinite;
+}
+
+/* ── Count-up numbers ── */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F0E8; }
+::-webkit-scrollbar-thumb { background: #A8C5AA; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #4A7C59; }
+
+/* ── Tag Pills ── */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: #D4E6D5;
+  color: #2C6641;
+}
+
+/* ── Hamburger Menu ── */
+#mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+#mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* ── Accordion ── */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.accordion-content.open {
+  max-height: 600px;
+}
+
+/* ── Sage gradient blob ── */
+.blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: radial-gradient(circle at 30% 40%, #A8C5AA 0%, #7C9A7E 60%, #4A7C59 100%);
+  filter: blur(0px);
+  opacity: 0.12;
+}
+
+/* ── Timeline ── */
+.timeline-step {
+  position: relative;
+}
+.timeline-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: calc(50% + 1.5rem);
+  width: calc(100% - 3rem);
+  height: 2px;
+  background: linear-gradient(90deg, #7C9A7E, #A8C5AA);
+}
+
+/* ── Selection ── */
+::selection {
+  background: #D4E6D5;
+  color: #2C2C2C;
+}
+
+/* ── Focus visible ── */
+:focus-visible {
+  outline: 2px solid #4A7C59;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Horizontal scroll ── */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
