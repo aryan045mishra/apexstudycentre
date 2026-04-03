@@ -1,1 +1,17 @@
-
+{
+  "name": "ascend-academy",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Ascend Academy — Premier offline coaching for Class 9–12 and JEE",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.14"
+  }
+}
