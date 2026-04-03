@@ -1,1 +1,382 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubjectCard from '../components/SubjectCard.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
 
+<BaseLayout
+  title="Class 12 Coaching — Boards + JEE"
+  description="Class 12 offline coaching for CBSE Boards and JEE Mains & Advanced at Ascend Academy. Dual-track system for the ultimate year."
+  activePage="class-12"
+>
+  <!-- ── HERO ── -->
+  <section class="relative bg-cream pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden grain-overlay">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-red-900/6 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-40 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 mb-8" data-animate="fade">
+        <a href="/" class="font-grotesk text-xs text-charcoal-muted hover:text-sage-dark transition-colors">Home</a>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 3L7.5 6L4.5 9" stroke="#6B6B6B" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="font-grotesk text-xs text-sage-dark font-600">Class 12</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <!-- Dual badges -->
+          <div class="flex flex-wrap gap-2 mb-5" data-animate="fade">
+            <div class="inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 font-grotesk text-xs font-600 px-4 py-2 rounded-full">
+              🏫 CBSE Board Exam
+            </div>
+            <div class="inline-flex items-center gap-2 bg-charcoal text-white font-grotesk text-xs font-600 px-4 py-2 rounded-full">
+              🎯 JEE Mains & Advanced
+            </div>
+          </div>
+
+          <h1 class="font-playfair font-900 text-charcoal leading-tight mb-5" style="font-size: clamp(2.2rem, 4.5vw, 3.8rem);" data-animate>
+            Class 12 — Your Boards.<br/>
+            Your JEE.<br/>
+            <em class="text-red-600 not-italic">Your Future.</em>
+          </h1>
+
+          <p class="font-dm text-lg text-charcoal-muted leading-relaxed mb-8 max-w-lg" data-animate data-delay="100">
+            The ultimate year — crack CBSE Boards and JEE simultaneously with our proven dual-track system. Two goals. One cohesive strategy. Zero compromise.
+          </p>
+
+          <div class="flex flex-wrap gap-3" data-animate data-delay="200">
+            <a
+              href="/#contact"
+              class="font-grotesk font-600 text-base bg-sage-dark text-white px-7 py-3.5 rounded-full shadow-sage hover:bg-sage transition-all duration-200 inline-flex items-center gap-2"
+            >
+              Enroll for Class 12 →
+            </a>
+            <a
+              href="/#contact"
+              class="font-grotesk font-500 text-base text-charcoal border-2 border-charcoal/20 px-7 py-3.5 rounded-full hover:border-charcoal/50 transition-all duration-200"
+            >
+              Book Counselling
+            </a>
+          </div>
+
+          <!-- Urgency notice -->
+          <div class="mt-6 inline-flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3" data-animate data-delay="300">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p class="font-grotesk text-xs font-600">Class 12 seats fill fast — only 15 seats per batch</p>
+          </div>
+        </div>
+
+        <div class="space-y-3" data-animate="slide-right" data-delay="200">
+          <!-- Stats grid -->
+          <div class="grid grid-cols-2 gap-3">
+            {[
+              { emoji: '🎓', label: 'Track 1', value: 'CBSE Board Excellence' },
+              { emoji: '🎯', label: 'Track 2', value: 'JEE Mains & Advanced' },
+              { emoji: '📝', label: 'Mock Tests', value: '40+ Full Tests' },
+              { emoji: '👥', label: 'Batch Size', value: '≤ 15 Students' },
+            ].map(card => (
+              <div class="bg-white rounded-2xl p-5 shadow-card border border-cream-dark card-lift">
+                <div class="text-2xl mb-2">{card.emoji}</div>
+                <p class="font-grotesk text-xs text-charcoal-muted uppercase tracking-widest font-500">{card.label}</p>
+                <p class="font-playfair font-700 text-base text-charcoal mt-0.5">{card.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <!-- Highlight quote -->
+          <div class="bg-sage-dark rounded-2xl p-5 text-white">
+            <p class="font-playfair font-600 italic text-lg leading-snug">
+              "Class 12 is the one year where every week of preparation directly translates to marks in Boards and rank in JEE."
+            </p>
+            <p class="font-grotesk text-xs text-white/60 mt-3">— Ascend Academy Faculty Team</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DUAL TRACK EXPLAINER ── -->
+  <section class="bg-charcoal py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dot-grid opacity-5 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-light uppercase tracking-widest">Our System</span>
+        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-white mt-2">The Dual-Track System</h2>
+        <p class="font-dm text-white/60 mt-3 max-w-md mx-auto">One student, two exam targets, one cohesive timetable. Here's how we balance both without compromise.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Board Track -->
+        <div class="bg-white/5 border border-white/15 rounded-2xl p-7 hover:bg-white/8 transition-colors" data-animate>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center text-xl">🏫</div>
+            <div>
+              <p class="font-grotesk text-xs font-600 text-red-400 uppercase tracking-widest">Track 1</p>
+              <h3 class="font-playfair font-700 text-xl text-white">Board Track</h3>
+            </div>
+          </div>
+          <p class="font-dm text-sm text-white/70 leading-relaxed mb-5">
+            Comprehensive CBSE-pattern preparation ensuring 90+ scores in Boards. Board exams remain the gateway to NIT/IIIT admission and JEE Advanced eligibility (75% criteria).
+          </p>
+          <ul class="space-y-2.5">
+            {[
+              'Full NCERT chapter-wise coverage with Board-focused notes',
+              'CBSE marking scheme training and answer writing workshops',
+              'Sample paper and past paper practice (2015–2024)',
+              'Pre-Board mock tests in exact CBSE exam pattern',
+              'Chapter-wise formula sheets and quick revision guides',
+              'Special doubt resolution sessions in Jan–March',
+            ].map(item => (
+              <li class="flex items-start gap-2.5 font-dm text-sm text-white/60">
+                <span class="w-4 h-4 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 2.5" stroke="#f87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- JEE Track -->
+        <div class="bg-white/5 border border-white/15 rounded-2xl p-7 hover:bg-white/8 transition-colors" data-animate data-delay="150">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-sage/20 flex items-center justify-center text-xl">🎯</div>
+            <div>
+              <p class="font-grotesk text-xs font-600 text-sage-light uppercase tracking-widest">Track 2</p>
+              <h3 class="font-playfair font-700 text-xl text-white">JEE Track</h3>
+            </div>
+          </div>
+          <p class="font-dm text-sm text-white/70 leading-relaxed mb-5">
+            Depth-first JEE preparation covering both Class 11 revision and Class 12 topics simultaneously. JEE demands 3–5 level deeper understanding than Boards.
+          </p>
+          <ul class="space-y-2.5">
+            {[
+              'Class 11 content quick revision integrated in Class 12 teaching',
+              'JEE-level problem solving with difficulty progression',
+              'Weekly JEE Mains and Advanced pattern mock tests',
+              'Rank-predictor analysis after each full mock test',
+              'Personalized weak-area targeting and remediation sessions',
+              'JEE Advanced integer-type, paragraph, and multi-correct training',
+            ].map(item => (
+              <li class="flex items-start gap-2.5 font-dm text-sm text-white/60">
+                <span class="w-4 h-4 rounded-full bg-sage/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 2.5" stroke="#A8C5AA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- How tracks integrate -->
+      <div class="mt-8 bg-white/5 border border-white/10 rounded-2xl p-6" data-animate data-delay="250">
+        <p class="font-grotesk text-xs font-600 text-white/40 uppercase tracking-widest mb-4">How Both Tracks Work Together</p>
+        <div class="grid md:grid-cols-4 gap-4 text-center">
+          {[
+            { day: 'Mon / Wed / Fri', focus: 'JEE-Level Teaching', desc: 'New chapters taught at JEE depth with Board notes as subset' },
+            { day: 'Tuesday / Thursday', focus: 'Problem Solving', desc: 'Mixed Board + JEE problem sets, time-bound sessions' },
+            { day: 'Saturday AM', focus: 'Weekly Test', desc: 'Alternates: JEE Mains mock one week, Board paper next week' },
+            { day: 'Saturday PM', focus: 'Test Analysis', desc: 'One-on-one review with faculty for each student' },
+          ].map((item, i) => (
+            <div class="text-center" data-delay={String(i * 80)}>
+              <p class="font-grotesk text-xs font-700 text-sage-light uppercase tracking-widest">{item.day}</p>
+              <p class="font-playfair font-700 text-base text-white mt-1 mb-1.5">{item.focus}</p>
+              <p class="font-dm text-xs text-white/40 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUBJECTS ── -->
+  <section class="bg-cream-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Curriculum</span>
+        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2">Class 12 is where<br/>JEE is won or lost</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">The most high-weightage chapters for both Boards and JEE exist in Class 12. We ensure every topic is mastered.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <SubjectCard
+          subject="Physics"
+          icon="⚡"
+          color="red"
+          chapters={['Electric Charges & Fields', 'Electrostatic Potential', 'Current Electricity', 'Moving Charges & Magnetism', 'Magnetism & Matter', 'Electromagnetic Induction', 'Alternating Current', 'EM Waves', 'Ray Optics', 'Wave Optics', 'Dual Nature of Radiation', 'Atoms & Nuclei', 'Semiconductor Devices', 'Communication Systems']}
+          outcomes={[
+            'Solve all electrostatics problems from JEE Advanced archives',
+            'Apply Kirchhoff\'s Laws to complex circuit networks',
+            'Analyze AC circuits with impedance and resonance',
+            'Understand Modern Physics: photoelectric effect, Bohr model',
+            'Master optics — both ray and wave — for JEE level accuracy',
+          ]}
+          delay="0"
+        />
+        <SubjectCard
+          subject="Chemistry"
+          icon="⚗️"
+          color="amber"
+          chapters={['Solid State', 'Solutions', 'Electrochemistry', 'Chemical Kinetics', 'Surface Chemistry', 'p-Block Elements (16–18)', 'd & f Block Elements', 'Coordination Compounds', 'Haloalkanes', 'Alcohols & Ethers', 'Aldehydes & Ketones', 'Carboxylic Acids', 'Amines', 'Biomolecules', 'Polymers']}
+          outcomes={[
+            'Solve electrochemistry problems: Nernst equation, cell EMF',
+            'Write organic reaction mechanisms with arrow-pushing clarity',
+            'Master coordination chemistry for JEE Advanced depth',
+            'Complete kinetics, order of reaction, half-life problems',
+            'Score full marks in the Organic Chemistry section',
+          ]}
+          delay="150"
+        />
+        <SubjectCard
+          subject="Mathematics"
+          icon="∫"
+          color="purple"
+          chapters={['Relations & Functions', 'Inverse Trigonometric Functions', 'Matrices', 'Determinants', 'Continuity & Differentiability', 'Application of Derivatives', 'Integrals', 'Application of Integrals', 'Differential Equations', 'Vectors', '3D Geometry', 'Linear Programming', 'Probability']}
+          outcomes={[
+            'Master calculus: differentiation, integration, and applications',
+            'Solve 3D geometry problems for JEE Advanced level',
+            'Apply vectors and linear algebra to physics problems',
+            'Solve probability problems using Bayes\' theorem confidently',
+            'Complete differential equations chapter for JEE and Boards',
+          ]}
+          delay="300"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MOCK TEST & REVISION PLAN ── -->
+  <section class="bg-cream py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Revision Strategy</span>
+        <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-charcoal mt-2">Mock Test & Revision Calendar</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">A precise month-by-month plan that ensures every student peaks on exam day.</p>
+      </div>
+
+      <!-- Calendar-style grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3" data-animate data-delay="100">
+        {[
+          {
+            month: 'April–June',
+            label: 'New Chapters',
+            color: 'bg-sage-faint border-sage-pale',
+            textColor: 'text-sage-dark',
+            tasks: ['Full Chapter Teaching', 'JEE Depth Problems', 'Weekly Topic Tests'],
+          },
+          {
+            month: 'July–Aug',
+            label: 'Build Speed',
+            color: 'bg-blue-50 border-blue-200',
+            textColor: 'text-blue-700',
+            tasks: ['Timed Problem Sets', 'Cumulative Tests', 'Board Numericals'],
+          },
+          {
+            month: 'September',
+            label: 'Full Coverage',
+            color: 'bg-amber-50 border-amber-200',
+            textColor: 'text-amber-700',
+            tasks: ['Chapter Completion', 'Revision Cycle 1', 'Full Mock Test 1'],
+          },
+          {
+            month: 'Oct–Nov',
+            label: 'Intensive Prep',
+            color: 'bg-purple-50 border-purple-200',
+            textColor: 'text-purple-700',
+            tasks: ['3 Full JEE Mocks/Month', 'Pre-Board Papers', 'Weak Area Focus'],
+          },
+          {
+            month: 'Dec–Jan',
+            label: 'Final Push',
+            color: 'bg-red-50 border-red-200',
+            textColor: 'text-red-700',
+            tasks: ['JEE Mains Prep', '10 Full Mocks', 'Board Paper Marathon'],
+          },
+          {
+            month: 'Feb–Mar',
+            label: 'Exam Mode',
+            color: 'bg-charcoal border-charcoal/20',
+            textColor: 'text-white',
+            tasks: ['Board Exams', 'JEE Mains', 'JEE Advanced Prep'],
+            dark: true,
+          },
+        ].map((item, i) => (
+          <div class={`rounded-2xl border p-5 card-lift ${item.color}`} data-animate data-delay={String(i * 80)}>
+            <p class={`font-grotesk text-xs font-700 uppercase tracking-widest ${item.dark ? 'text-white/50' : item.textColor} mb-1`}>{item.month}</p>
+            <h4 class={`font-playfair font-700 text-base mb-3 ${item.dark ? 'text-white' : 'text-charcoal'}`}>{item.label}</h4>
+            <ul class="space-y-1.5">
+              {item.tasks.map(t => (
+                <li class={`font-dm text-xs leading-relaxed ${item.dark ? 'text-white/60' : 'text-charcoal-muted'} flex items-start gap-1.5`}>
+                  <span class={`w-1 h-1 rounded-full ${item.dark ? 'bg-sage-light' : item.textColor.replace('text-', 'bg-').replace('-700','-400').replace('-dark','')} flex-shrink-0 mt-1.5`}></span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- Additional note -->
+      <div class="mt-8 bg-sage-faint border border-sage-pale rounded-2xl p-6 flex items-start gap-4" data-animate>
+        <div class="w-10 h-10 rounded-xl bg-sage-dark flex items-center justify-center flex-shrink-0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <h4 class="font-grotesk font-600 text-sm text-charcoal mb-1">Personalized Revision Plan for Every Student</h4>
+          <p class="font-dm text-sm text-charcoal-muted leading-relaxed">
+            Each student receives a customized revision calendar based on their performance data, weak areas, and target exam dates. No two students are given the same revision strategy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS ── -->
+  <section class="bg-cream-dark py-12 border-y border-cream-deeper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { value: '93', suffix: '%', label: 'Average CBSE Board score (2024 batch)' },
+          { value: '12', suffix: ' IITs', label: 'Students admitted to IITs from 2022–2024' },
+          { value: '40+', suffix: '', label: 'JEE mock tests conducted per year' },
+          { value: '2', suffix: 'x', label: 'Better results than self-study averages' },
+        ].map((stat, i) => (
+          <div data-animate data-delay={String(i * 100)}>
+            <p class="font-playfair font-800 text-4xl text-sage-dark">{stat.value}<span class="text-2xl">{stat.suffix}</span></p>
+            <p class="font-dm text-xs text-charcoal-muted mt-1 leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIAL ── -->
+  <section class="bg-cream py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+      <div class="bg-white rounded-3xl p-10 shadow-card border border-cream-dark relative" data-animate>
+        <div class="font-playfair text-8xl text-sage-light leading-none absolute top-6 left-8 opacity-40 select-none">"</div>
+        <p class="font-playfair text-xl lg:text-2xl text-charcoal leading-relaxed italic mb-8 relative z-10">
+          I cracked JEE Advanced 2024 with AIR 2,847 and scored 91% in my Class 12 Boards — simultaneously. The dual-track system at Ascend Academy is real. I never felt like I was sacrificing one for the other.
+        </p>
+        <div class="flex items-center justify-center gap-3">
+          <div class="w-12 h-12 rounded-full bg-sage-dark flex items-center justify-center font-grotesk font-700 text-white">AK</div>
+          <div class="text-left">
+            <p class="font-grotesk font-600 text-charcoal">Arjun Kumar</p>
+            <p class="font-dm text-sm text-charcoal-muted">Class 12 (2024) · JEE Advanced AIR 2,847 · 91% in CBSE Boards · Now at IIT Roorkee</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA — MOST URGENT ── -->
+  <CTABanner
+    heading="Class 12 Seats Fill Fast — Secure Your Spot Today"
+    subtext="This is the most important year of your academic life. Don't spend it in an overcrowded classroom. Join Ascend Academy — where every student matters."
+    btnLabel="Reserve Your Seat Now"
+    btnHref="/#contact"
+    urgency={true}
+  />
+</BaseLayout>
