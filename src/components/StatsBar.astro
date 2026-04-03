@@ -1,1 +1,32 @@
+---
+const stats = [
+  { value: 500, suffix: '+', label: 'Students Enrolled', icon: '🎓' },
+  { value: 4, suffix: ' Classes', label: 'Class 9 to 12 Covered', icon: '📚' },
+  { value: 98, suffix: '%', label: 'Board Exam Pass Rate', icon: '🏆' },
+  { value: 100, suffix: '%', label: 'Offline, 100% Personal', icon: '🤝' },
+];
+---
 
+<section id="stats-bar" class="bg-charcoal relative overflow-hidden py-12 lg:py-14">
+  <!-- Subtle texture -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 left-0 w-64 h-64 rounded-full bg-sage-light blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-sage blur-3xl translate-x-1/2 translate-y-1/2"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+      {stats.map((stat, i) => (
+        <div class="flex flex-col items-center text-center group" data-animate data-delay={String(i * 100)}>
+          <div class="text-2xl mb-2 opacity-80">{stat.icon}</div>
+          <div class="font-playfair font-800 text-white mb-1 flex items-baseline gap-0.5 text-4xl lg:text-5xl">
+            <span class="stat-number" data-target={stat.value} data-suffix={stat.suffix}>0{stat.suffix}</span>
+          </div>
+          <p class="font-grotesk text-xs text-sage-light uppercase tracking-widest font-500">{stat.label}</p>
+          <!-- Decorative underline -->
+          <div class="w-8 h-0.5 bg-sage mt-3 group-hover:w-16 transition-all duration-500 rounded-full"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
