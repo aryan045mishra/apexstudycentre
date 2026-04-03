@@ -1,1 +1,135 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
+interface Props {
+  title: string;
+  description?: string;
+  activePage?: string;
+}
+
+const {
+  title,
+  description = 'Ascend Academy — Premier offline coaching for Class 9 to 12, JEE Mains & Advanced, and CBSE Board Exam preparation.',
+  activePage = 'home',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#F5F0E8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Ascend Academy</title>
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | Ascend Academy`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="bg-cream min-h-screen">
+    <Navbar activePage={activePage} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Scroll Animation Observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('[data-animate]').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+          navbar?.classList.add('scrolled');
+        } else {
+          navbar?.classList.remove('scrolled');
+        }
+      });
+
+      // Mobile menu
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeBtn = document.getElementById('close-menu');
+
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closeBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+
+      // Count-up animation for stats
+      function animateCount(el: HTMLElement) {
+        const target = parseInt(el.dataset.target || '0', 10);
+        const duration = 1800;
+        const step = Math.ceil(target / (duration / 16));
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current.toLocaleString() + (el.dataset.suffix || '');
+          if (current >= target) clearInterval(timer);
+        }, 16);
+      }
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const nums = entry.target.querySelectorAll('[data-target]') as NodeListOf<HTMLElement>;
+              nums.forEach(animateCount);
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const statsBar = document.getElementById('stats-bar');
+      if (statsBar) statsObserver.observe(statsBar);
+
+      // Accordion
+      document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const content = trigger.nextElementSibling as HTMLElement;
+          const icon = trigger.querySelector('.acc-icon') as HTMLElement;
+          const isOpen = content.classList.contains('open');
+
+          document.querySelectorAll('.accordion-content').forEach((c) => c.classList.remove('open'));
+          document.querySelectorAll('.acc-icon').forEach((i) => (i as HTMLElement).style.transform = 'rotate(0deg)');
+
+          if (!isOpen) {
+            content.classList.add('open');
+            if (icon) icon.style.transform = 'rotate(45deg)';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
