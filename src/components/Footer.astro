@@ -1,1 +1,143 @@
+---
+---
 
+<footer class="bg-cream-dark border-t border-cream-deeper">
+  <!-- Wave divider -->
+  <div class="h-16 bg-cream overflow-hidden">
+    <svg viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+      <path d="M0 32C240 0 480 64 720 32C960 0 1200 64 1440 32V64H0V32Z" fill="#EDE8DC"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+
+      <!-- Col 1: Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-sage-dark flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 2L15.5 5.5V12.5L9 16L2.5 12.5V5.5L9 2Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 8L12 9.5V12.5L9 14L6 12.5V9.5L9 8Z" fill="white" fill-opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="font-playfair text-xl font-700 text-charcoal">
+            Ascend<span class="text-sage-dark">.</span>Academy
+          </span>
+        </a>
+        <p class="font-dm text-sm text-charcoal-muted leading-relaxed max-w-64">
+          Where curious minds become confident achievers. Offline coaching for Class 9–12 and JEE Mains & Advanced.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-cream-deeper flex items-center justify-center hover:bg-sage-pale transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="1.8" stroke-linecap="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="#4A7C59"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full bg-cream-deeper flex items-center justify-center hover:bg-sage-pale transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="1.8" stroke-linecap="round">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#4A7C59" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-full bg-cream-deeper flex items-center justify-center hover:bg-sage-pale transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="1.8" stroke-linecap="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <p class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-widest mb-5">Quick Links</p>
+        <ul class="space-y-3">
+          {[
+            { href: '/', label: 'Home' },
+            { href: '/class-9', label: 'Class 9 Coaching' },
+            { href: '/class-10', label: 'Class 10 Coaching' },
+            { href: '/class-11', label: 'Class 11 Coaching' },
+            { href: '/class-12', label: 'Class 12 Coaching' },
+            { href: '/#about', label: 'About Us' },
+            { href: '/#contact', label: 'Contact' },
+          ].map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="font-dm text-sm text-charcoal-light hover:text-sage-dark transition-colors flex items-center gap-2 group"
+              >
+                <span class="w-1 h-1 rounded-full bg-sage opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Contact -->
+      <div>
+        <p class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-widest mb-5">Contact Us</p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sage-faint flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2" stroke-linecap="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-dm text-sm text-charcoal-light leading-relaxed">12-B, Sector 14, Near Model Town,<br/>Delhi – 110009</p>
+            </div>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sage-faint flex items-center justify-center flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2" stroke-linecap="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37A16 16 0 0 0 15.63 16l.94-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23.18 17z"/>
+              </svg>
+            </div>
+            <a href="tel:+919876543210" class="font-dm text-sm text-charcoal-light hover:text-sage-dark transition-colors">+91 98765 43210</a>
+          </li>
+          <li class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sage-faint flex items-center justify-center flex-shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2" stroke-linecap="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <a href="mailto:admissions@ascendacademy.in" class="font-dm text-sm text-charcoal-light hover:text-sage-dark transition-colors">admissions@ascendacademy.in</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sage-faint flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-dm text-sm text-charcoal-light">Mon–Sat: 8:00 AM – 8:00 PM</p>
+              <p class="font-dm text-xs text-charcoal-muted">Sunday: 9:00 AM – 1:00 PM</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-6 border-t border-cream-deeper flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-dm text-xs text-charcoal-muted">
+        © {new Date().getFullYear()} Ascend Academy. All rights reserved.
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="#" class="font-dm text-xs text-charcoal-muted hover:text-charcoal transition-colors">Privacy Policy</a>
+        <span class="text-charcoal-muted/40">·</span>
+        <a href="#" class="font-dm text-xs text-charcoal-muted hover:text-charcoal transition-colors">Terms of Service</a>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-sage animate-pulse-slow"></span>
+        <p class="font-grotesk text-xs text-charcoal-muted">Admissions Open 2025–26</p>
+      </div>
+    </div>
+  </div>
+</footer>
