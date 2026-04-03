@@ -1,1 +1,341 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubjectCard from '../components/SubjectCard.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
 
+<BaseLayout
+  title="Class 11 Coaching — JEE Foundation"
+  description="Class 11 offline coaching for JEE preparation at Ascend Academy. Physics, Chemistry, Mathematics with IIT alumni faculty."
+  activePage="class-11"
+>
+  <!-- ── HERO ── -->
+  <section class="relative bg-cream pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden grain-overlay">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-amber-900/8 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-40 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 mb-8" data-animate="fade">
+        <a href="/" class="font-grotesk text-xs text-charcoal-muted hover:text-sage-dark transition-colors">Home</a>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 3L7.5 6L4.5 9" stroke="#6B6B6B" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="font-grotesk text-xs text-sage-dark font-600">Class 11</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <!-- Dual badges -->
+          <div class="flex flex-wrap gap-2 mb-5" data-animate="fade">
+            <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 font-grotesk text-xs font-600 px-4 py-2 rounded-full">
+              🎯 JEE Foundation
+            </div>
+            <div class="inline-flex items-center gap-2 bg-sage-faint border border-sage-pale text-sage-dark font-grotesk text-xs font-600 px-4 py-2 rounded-full">
+              📍 Offline Only
+            </div>
+          </div>
+
+          <h1 class="font-playfair font-900 text-charcoal leading-tight mb-5" style="font-size: clamp(2.2rem, 4.5vw, 3.8rem);" data-animate>
+            Class 11 — The Year<br/>That <em class="text-amber-600 not-italic">Makes or Breaks</em><br/>Your JEE
+          </h1>
+
+          <p class="font-dm text-lg text-charcoal-muted leading-relaxed mb-8 max-w-lg" data-animate data-delay="100">
+            Physics, Chemistry, Mathematics — built from scratch with JEE rigor. Class 11 introduces the most conceptually dense content in all of science education. We make it stick.
+          </p>
+
+          <div class="flex flex-wrap gap-3" data-animate data-delay="200">
+            <a
+              href="/#contact"
+              class="font-grotesk font-600 text-base bg-sage-dark text-white px-7 py-3.5 rounded-full shadow-sage hover:bg-sage transition-all duration-200 inline-flex items-center gap-2"
+            >
+              Enroll for Class 11 →
+            </a>
+            <a
+              href="/#contact"
+              class="font-grotesk font-500 text-base text-charcoal border-2 border-charcoal/20 px-7 py-3.5 rounded-full hover:border-charcoal/50 transition-all duration-200"
+            >
+              Book a Counselling Call
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-3" data-animate="slide-right" data-delay="200">
+          <!-- Faculty highlight -->
+          <div class="bg-charcoal rounded-2xl p-6 text-white">
+            <p class="font-grotesk text-xs font-600 text-white/50 uppercase tracking-widest mb-3">Faculty Profile</p>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sage-dark flex items-center justify-center font-grotesk font-700 text-white text-lg flex-shrink-0">IIT</div>
+              <div>
+                <p class="font-playfair font-700 text-lg text-white">IIT Alumni Faculty</p>
+                <p class="font-dm text-sm text-white/60 mt-1">Our Class 11 faculty are graduates of IIT Delhi, IIT Bombay, and IIT Kanpur — who chose teaching as their mission.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3">
+            {[
+              { emoji: '⚛️', label: 'Physics', count: '12 chapters' },
+              { emoji: '🧪', label: 'Chemistry', count: '14 chapters' },
+              { emoji: '📐', label: 'Mathematics', count: '16 chapters' },
+            ].map(s => (
+              <div class="bg-white rounded-xl p-4 shadow-card border border-cream-dark text-center card-lift">
+                <div class="text-2xl mb-1">{s.emoji}</div>
+                <p class="font-grotesk text-xs font-600 text-charcoal">{s.label}</p>
+                <p class="font-dm text-xs text-charcoal-muted mt-0.5">{s.count}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUBJECTS ── -->
+  <section class="bg-cream-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Curriculum</span>
+        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2">Three subjects.<br/>Infinite depth.</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">Every chapter taught at both school exam level and JEE level — simultaneously.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <SubjectCard
+          subject="Physics"
+          icon="⚛️"
+          color="blue"
+          chapters={['Kinematics (1D & 2D)', 'Laws of Motion', 'Work, Energy & Power', 'System of Particles', 'Rotational Motion', 'Gravitation', 'Properties of Matter', 'Thermodynamics', 'Kinetic Theory', 'Waves & Oscillations', 'Fluid Mechanics', 'Thermal Properties']}
+          outcomes={[
+            'Solve complex multi-step kinematics and dynamics problems',
+            'Apply Work-Energy Theorem across JEE-style scenarios',
+            'Analyze rotational motion with torque and angular momentum',
+            'Use thermodynamic laws in process-based problems',
+            'Master wave superposition and standing waves',
+          ]}
+          delay="0"
+        />
+        <SubjectCard
+          subject="Chemistry"
+          icon="🧪"
+          color="amber"
+          chapters={['Some Basic Concepts', 'Structure of Atom', 'Classification of Elements', 'Chemical Bonding', 'States of Matter', 'Thermodynamics', 'Equilibrium', 'Redox Reactions', 'Hydrogen', 's-Block Elements', 'p-Block Elements', 'Organic Basics', 'Hydrocarbons', 'Environmental Chemistry']}
+          outcomes={[
+            'Master mole concept, stoichiometry, and chemical calculations',
+            'Understand quantum mechanical model of atom',
+            'Apply VSEPR theory to predict molecular geometry',
+            'Solve equilibrium problems using ICE tables',
+            'Write mechanisms for basic organic reactions',
+          ]}
+          delay="150"
+        />
+        <SubjectCard
+          subject="Mathematics"
+          icon="📐"
+          color="purple"
+          chapters={['Sets & Relations', 'Functions', 'Trigonometric Functions', 'Inverse Trigonometry', 'Complex Numbers', 'Quadratic Equations', 'Linear Inequalities', 'Permutations & Combinations', 'Binomial Theorem', 'Sequences & Series', 'Straight Lines', 'Conic Sections', 'Limits & Derivatives', 'Statistics & Probability']}
+          outcomes={[
+            'Solve JEE-level problems in complex numbers and quadratics',
+            'Apply P&C and probability to multi-step problems',
+            'Master graph sketching for all conic sections',
+            'Compute limits and derivatives using first principles',
+            'Achieve speed and accuracy in 3–5 mark problems',
+          ]}
+          delay="300"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── JEE ROADMAP VISUAL ── -->
+  <section class="bg-cream py-20 lg:py-28 overflow-x-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">The Bigger Picture</span>
+        <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-charcoal mt-2">Your JEE Roadmap</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">Class 11 is Step 1. Here's how every year connects to your final destination.</p>
+      </div>
+
+      <!-- Horizontal Timeline -->
+      <div class="relative overflow-x-auto pb-4" data-animate data-delay="100">
+        <div class="flex items-start min-w-max gap-0 relative">
+          {[
+            {
+              step: '01',
+              label: 'Class 11',
+              sublabel: 'Foundation Year',
+              body: 'Build all PCM concepts from scratch with JEE-level depth. Establish problem-solving habits.',
+              current: true,
+              color: 'bg-amber-500',
+              lightColor: 'bg-amber-50 border-amber-200',
+              textColor: 'text-amber-700',
+            },
+            {
+              step: '02',
+              label: 'Class 12',
+              sublabel: 'Mastery Year',
+              body: 'Complete remaining chapters, Boards preparation, and JEE-level revision of Class 11.',
+              current: false,
+              color: 'bg-sage-dark',
+              lightColor: 'bg-sage-faint border-sage-pale',
+              textColor: 'text-sage-dark',
+            },
+            {
+              step: '03',
+              label: 'JEE Mains',
+              sublabel: 'January & April',
+              body: 'NTA-conducted national exam. Top 2.5 lakh qualify for JEE Advanced. 90 questions, 300 marks.',
+              current: false,
+              color: 'bg-blue-600',
+              lightColor: 'bg-blue-50 border-blue-200',
+              textColor: 'text-blue-700',
+            },
+            {
+              step: '04',
+              label: 'JEE Advanced',
+              sublabel: 'IIT Admission',
+              body: 'The pinnacle of engineering entrance in India. 2 papers, 6 hours total. Opens doors to IITs.',
+              current: false,
+              color: 'bg-charcoal',
+              lightColor: 'bg-cream border-cream-dark',
+              textColor: 'text-charcoal',
+            },
+          ].map((stage, i) => (
+            <div class="flex items-start">
+              <div class="flex flex-col items-center w-64 px-4">
+                <!-- Icon -->
+                <div class={`w-12 h-12 rounded-full ${stage.color} flex items-center justify-center font-grotesk font-700 text-white text-sm z-10 relative ${stage.current ? 'ring-4 ring-offset-4 ring-amber-200' : ''}`}>
+                  {stage.step}
+                </div>
+                <!-- Card -->
+                <div class={`mt-5 w-full rounded-2xl border p-5 ${stage.lightColor} ${stage.current ? 'shadow-card' : ''}`}>
+                  <p class={`font-grotesk text-xs font-700 uppercase tracking-widest ${stage.textColor} mb-1`}>{stage.sublabel}</p>
+                  <h3 class="font-playfair font-700 text-xl text-charcoal mb-2">{stage.label}</h3>
+                  <p class="font-dm text-xs text-charcoal-muted leading-relaxed">{stage.body}</p>
+                  {stage.current && (
+                    <div class={`mt-3 inline-flex items-center gap-1.5 font-grotesk text-xs font-600 ${stage.textColor}`}>
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                      You are here
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <!-- Connecting arrow -->
+              {i < 3 && (
+                <div class="flex items-center pt-6 w-8">
+                  <div class="flex-1 h-px bg-gradient-to-r from-charcoal/20 to-charcoal/20"></div>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="flex-shrink-0">
+                    <path d="M4 8H12M12 8L8.5 4.5M12 8L8.5 11.5" stroke="#6B6B6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WEEKLY TEST SYSTEM ── -->
+  <section class="bg-charcoal py-20 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dot-grid opacity-5 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div data-animate>
+          <span class="font-grotesk text-xs font-600 text-sage-light uppercase tracking-widest">Test System</span>
+          <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-white mt-2 mb-4">Weekly tests that build<br/><em class="text-sage-light not-italic">exam temperament</em></h2>
+          <p class="font-dm text-white/70 text-base leading-relaxed mb-6">
+            JEE Advanced is not just about knowledge — it's about performance under pressure. Our weekly test system replicates that pressure every single week, so by the time the real exam arrives, our students are veterans.
+          </p>
+          <div class="space-y-3">
+            {[
+              'Topic-wise tests every week (Tuesday/Friday)',
+              'Cumulative revision tests every 3 weeks',
+              'Full-length mock tests every month',
+              'Personalized performance analysis after each test',
+              'Parent progress reports every month',
+            ].map(item => (
+              <div class="flex items-center gap-3">
+                <div class="w-5 h-5 rounded-full bg-sage-dark flex items-center justify-center flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="font-dm text-sm text-white/80">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Test cadence visual -->
+        <div class="space-y-3" data-animate data-delay="200">
+          <p class="font-grotesk text-xs font-600 text-white/40 uppercase tracking-widest mb-4">Monthly Test Calendar</p>
+          {[
+            { week: 'Week 1', type: 'Topic Test: Physics', format: '30 MCQs · 60 mins · JEE Mains Pattern', color: 'bg-blue-500/20 border-blue-500/30 text-blue-300' },
+            { week: 'Week 2', type: 'Topic Test: Chemistry', format: '30 MCQs · 60 mins · JEE Mains Pattern', color: 'bg-amber-500/20 border-amber-500/30 text-amber-300' },
+            { week: 'Week 3', type: 'Topic Test: Mathematics', format: '30 MCQs · 60 mins · JEE Mains Pattern', color: 'bg-purple-500/20 border-purple-500/30 text-purple-300' },
+            { week: 'Week 4', type: 'Full Mock Test (PCM)', format: '90 Qs · 3 hours · Full JEE Mains Simulation', color: 'bg-sage/30 border-sage/40 text-sage-light' },
+          ].map((item, i) => (
+            <div class={`flex items-start gap-4 p-4 rounded-xl border ${item.color} bg-opacity-20`} data-animate data-delay={String(i * 80)}>
+              <div class="text-center">
+                <p class="font-grotesk text-xs font-700 text-white/40 uppercase">{item.week}</p>
+              </div>
+              <div>
+                <p class={`font-grotesk text-sm font-600 ${item.color.split(' ')[2]}`}>{item.type}</p>
+                <p class="font-dm text-xs text-white/50 mt-0.5">{item.format}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY CLASS 11 IS DIFFERENT ── -->
+  <section class="bg-cream py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">The Reality Check</span>
+        <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-charcoal mt-2">Class 11 changes everything</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {[
+          {
+            icon: '⚡',
+            title: 'The hardest conceptual jump in your academic life',
+            body: 'Going from Class 10 Maths to Class 11 PCM is the biggest academic shock students face. Concepts like Kinematics, Organic Chemistry, and Limits require entirely new thinking patterns. Without proper guidance, students fall behind within weeks.',
+          },
+          {
+            icon: '📈',
+            title: 'Class 11 performance directly predicts JEE rank',
+            body: 'Over 60% of JEE syllabus comes from Class 11 chapters. Students who master Class 11 content deeply tend to outperform those who scrambled through it. Your foundation here determines your ceiling in JEE Advanced.',
+          },
+          {
+            icon: '🧠',
+            title: 'Problem-solving mindset needs 2 years to develop',
+            body: 'JEE Advanced doesn\'t just test knowledge — it tests analytical thinking. That thinking style takes 2 years of daily practice to develop. Starting Class 11 with us means you get the full 2-year developmental arc.',
+          },
+          {
+            icon: '👁️',
+            title: 'Online coaching doesn\'t work for PCM',
+            body: 'Physics and Chemistry need tactile, real-time doubt resolution. When a student doesn\'t understand Newton\'s Third Law, they need to ask immediately — not wait for an online Q&A session 3 days later. We are 100% offline.',
+          },
+        ].map((item, i) => (
+          <div class="bg-white rounded-2xl p-7 shadow-card border border-cream-dark card-lift group" data-animate data-delay={String(i * 100)}>
+            <div class="w-12 h-12 rounded-xl bg-sage-faint flex items-center justify-center text-2xl mb-4">{item.icon}</div>
+            <h3 class="font-playfair font-700 text-xl text-charcoal mb-3">{item.title}</h3>
+            <p class="font-dm text-sm text-charcoal-muted leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <CTABanner
+    heading="Class 11 Seats Are Filling Up — Enroll Now"
+    subtext="The best time to start preparing for JEE is Class 11, Day 1. Don't let another week slip by."
+    btnLabel="Enroll for Class 11"
+    btnHref="/#contact"
+    urgency={true}
+  />
+</BaseLayout>
