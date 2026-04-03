@@ -1,1 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubjectCard from '../components/SubjectCard.astro';
+import CTABanner from '../components/CTABanner.astro';
+---
 
+<BaseLayout
+  title="Class 10 Coaching — CBSE Boards"
+  description="Class 10 CBSE Board exam coaching at Ascend Academy. Expert Mathematics and Science preparation for 95+ scores."
+  activePage="class-10"
+>
+  <!-- ── HERO ── -->
+  <section class="relative bg-cream pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden grain-overlay">
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-900/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-40 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 mb-8" data-animate="fade">
+        <a href="/" class="font-grotesk text-xs text-charcoal-muted hover:text-sage-dark transition-colors">Home</a>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 3L7.5 6L4.5 9" stroke="#6B6B6B" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="font-grotesk text-xs text-sage-dark font-600">Class 10</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-grotesk text-xs font-600 px-4 py-2 rounded-full mb-5" data-animate="fade">
+            🏫 CBSE Board Exam Focused
+          </div>
+
+          <h1 class="font-playfair font-900 text-charcoal leading-tight mb-5" style="font-size: clamp(2.4rem, 5vw, 4rem);" data-animate>
+            Class 10 —<br/>
+            <em class="text-blue-600 not-italic">Score Big in Your</em><br/>CBSE Boards
+          </h1>
+
+          <p class="font-dm text-lg text-charcoal-muted leading-relaxed mb-8 max-w-lg" data-animate data-delay="100">
+            Mathematics and Science — the two subjects that define your Board result and your Class 11 stream. Our Class 10 program is engineered for 90+ scores.
+          </p>
+
+          <div class="flex flex-wrap gap-3" data-animate data-delay="200">
+            <a
+              href="/#contact"
+              class="font-grotesk font-600 text-base bg-sage-dark text-white px-7 py-3.5 rounded-full shadow-sage hover:bg-sage transition-all duration-200 inline-flex items-center gap-2"
+            >
+              Enroll for Class 10 →
+            </a>
+            <a
+              href="/#contact"
+              class="font-grotesk font-500 text-base text-charcoal border-2 border-charcoal/20 px-7 py-3.5 rounded-full hover:border-charcoal/50 transition-all duration-200"
+            >
+              Free Trial Class
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3" data-animate="slide-right" data-delay="200">
+          {[
+            { emoji: '🎯', label: 'Target Score', value: '90+ in Boards' },
+            { emoji: '📖', label: 'Coverage', value: 'Full CBSE Syllabus' },
+            { emoji: '📝', label: 'Practice Papers', value: '20+ Past Papers' },
+            { emoji: '👥', label: 'Batch Size', value: '≤ 15 Students' },
+          ].map(card => (
+            <div class="bg-white rounded-2xl p-5 shadow-card border border-cream-dark card-lift">
+              <div class="text-2xl mb-2">{card.emoji}</div>
+              <p class="font-grotesk text-xs text-charcoal-muted uppercase tracking-widest font-500">{card.label}</p>
+              <p class="font-playfair font-700 text-lg text-charcoal mt-0.5">{card.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BOARD EXAM FOCUS BANNER ── -->
+  <section class="bg-blue-950 py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div data-animate>
+          <div class="inline-flex items-center gap-2 bg-white/10 text-white font-grotesk text-xs font-600 px-4 py-2 rounded-full mb-4 border border-white/20">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
+            Board Exam 2025–26 Preparation Starts Now
+          </div>
+          <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-white mb-4 leading-tight">Chapter-Wise Coverage Timeline</h2>
+          <p class="font-dm text-white/70 text-base leading-relaxed">
+            Every chapter is scheduled precisely across the academic year so students complete full syllabus coverage by November — leaving 3+ months for revision and past paper practice.
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="space-y-3" data-animate data-delay="200">
+          {[
+            { month: 'April – June', focus: 'Unit 1–2: Real Numbers, Polynomials, Algebra Foundations', done: false },
+            { month: 'July – August', focus: 'Unit 3–4: Geometry, Coordinate Geometry, Triangles', done: false },
+            { month: 'September – October', focus: 'Unit 5–6: Trigonometry, Circles, Areas, Statistics', done: false },
+            { month: 'November', focus: 'Full Syllabus Completion + Science Chapter Wrap-Up', done: false },
+            { month: 'Dec – January', focus: 'Past Papers, Sample Papers, Speed Practice', done: false },
+            { month: 'Feb – March', focus: 'Revision Cycles + Pre-Board Mock Tests', done: false },
+          ].map((item, i) => (
+            <div class="flex items-start gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/8 transition-colors" data-animate data-delay={String(i * 80)}>
+              <div class="w-6 h-6 rounded-full border-2 border-blue-400/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+              </div>
+              <div>
+                <p class="font-grotesk text-xs font-700 text-blue-300 uppercase tracking-widest">{item.month}</p>
+                <p class="font-dm text-sm text-white/70 mt-0.5">{item.focus}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SUBJECTS ── -->
+  <section class="bg-cream-dark py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Subjects</span>
+        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2">Everything you need to ace Boards</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">Complete CBSE syllabus, with extra attention to high-weightage chapters.</p>
+      </div>
+
+      <!-- Accordion Subjects -->
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <SubjectCard
+          subject="Mathematics"
+          icon="📐"
+          color="green"
+          chapters={['Real Numbers', 'Polynomials', 'Pair of Linear Equations', 'Quadratic Equations', 'AP & Sequences', 'Triangles', 'Coordinate Geometry', 'Trigonometry', 'Circles', 'Areas of Figures', 'Surface Areas & Volumes', 'Statistics', 'Probability']}
+          outcomes={[
+            'Solve all CBSE Board-level Mathematics problems independently',
+            'Achieve full marks in application-based questions',
+            'Master proof writing for geometry chapters',
+            'Confidently attempt 5-mark questions in exams',
+            'Complete paper in time with 20+ minutes to spare',
+          ]}
+          delay="0"
+        />
+        <SubjectCard
+          subject="Science"
+          icon="🔬"
+          color="blue"
+          chapters={['Chemical Reactions', 'Acids, Bases & Salts', 'Metals & Non-Metals', 'Carbon Compounds', 'Life Processes', 'Control & Coordination', 'Reproduction', 'Heredity & Evolution', 'Light — Reflection & Refraction', 'Human Eye', 'Electricity', 'Magnetic Effects', 'Our Environment']}
+          outcomes={[
+            'Write accurate, structured answers for 5-mark Science questions',
+            'Draw and label all diagrams to board-standard quality',
+            'Understand chemical reactions and balance equations correctly',
+            'Apply Physics formulas to numerical problems confidently',
+            'Score full marks in the Biology section through precise definitions',
+          ]}
+          delay="150"
+        />
+      </div>
+
+      <!-- Board Strategy Box -->
+      <div class="bg-white rounded-2xl p-7 shadow-card border border-cream-dark" data-animate>
+        <p class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest mb-4">Our Board Exam Strategy</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {[
+            { title: 'Weightage-First Teaching', body: 'We identify the highest-scoring chapters and teach those first in depth. Students maximize marks even if time is limited.' },
+            { title: 'Answer Writing Training', body: 'Board exams reward structured answers. We train students on keyword usage, diagram quality, and step-by-step answer formatting.' },
+            { title: 'Past Paper Mastery', body: '10 years of CBSE past papers are solved and analyzed. Students recognize question patterns before entering the exam hall.' },
+          ].map((item, i) => (
+            <div class="flex gap-4" data-delay={String(i * 100)}>
+              <div class="w-8 h-8 rounded-xl bg-sage-faint flex items-center justify-center flex-shrink-0">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4A7C59" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <h4 class="font-grotesk font-600 text-sm text-charcoal mb-1">{item.title}</h4>
+                <p class="font-dm text-sm text-charcoal-muted leading-relaxed">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY BOARDS NEED SPECIAL PREP ── -->
+  <section class="bg-cream py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-12" data-animate>
+        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">The Exam Reality</span>
+        <h2 class="font-playfair font-800 text-3xl lg:text-4xl text-charcoal mt-2">Why CBSE Boards need<br/>specialized preparation</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: '⏱️',
+            title: 'Time Management is Half the Battle',
+            body: 'CBSE Board papers are 3 hours long with 40–80 questions. Without systematic speed training, even students who know the answers run out of time. We build exam speed through timed mock sessions from November onwards.',
+          },
+          {
+            icon: '📝',
+            title: 'CBSE Rewards Specific Keyword Usage',
+            body: 'Board examiners follow marking schemes with specific keywords. A student who writes a correct answer without the right terminology can lose 30–50% marks. We train exact answer formats for every question type.',
+          },
+          {
+            icon: '🎯',
+            title: 'Boards & JEE Have Different Mindsets',
+            body: 'Class 10 students often need to keep the JEE in mind for Class 11, but the Board exam requires memorization and structured output — not just problem-solving depth. We build both simultaneously.',
+          },
+        ].map((item, i) => (
+          <div class="bg-white rounded-2xl p-7 shadow-card border border-cream-dark card-lift group" data-animate data-delay={String(i * 150)}>
+            <div class="w-12 h-12 rounded-xl bg-sage-faint flex items-center justify-center text-2xl mb-5">{item.icon}</div>
+            <h3 class="font-playfair font-700 text-lg text-charcoal mb-3">{item.title}</h3>
+            <p class="font-dm text-sm text-charcoal-muted leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS BANNER ── -->
+  <section class="bg-cream-dark py-12 border-y border-cream-deeper">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { value: '94.2', suffix: '%', label: 'Average score in Mathematics (2024 batch)' },
+          { value: '91', suffix: '%', label: 'Average score in Science (2024 batch)' },
+          { value: '100', suffix: '%', label: 'Of students scored 75+ in both subjects' },
+          { value: '3', suffix: 'x', label: 'More focused preparation than school alone' },
+        ].map((stat, i) => (
+          <div data-animate data-delay={String(i * 100)}>
+            <p class="font-playfair font-800 text-4xl text-sage-dark">{stat.value}<span class="text-2xl">{stat.suffix}</span></p>
+            <p class="font-dm text-xs text-charcoal-muted mt-1 leading-relaxed">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <CTABanner
+    heading="Score 90+ in Your CBSE Boards"
+    subtext="Class 10 is a stepping stone to your dream stream. Start preparing seriously — with us."
+    btnLabel="Enroll for Class 10"
+    btnHref="/#contact"
+  />
+</BaseLayout>
