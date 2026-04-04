@@ -3,81 +3,179 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import StatsBar from '../components/StatsBar.astro';
 import CTABanner from '../components/CTABanner.astro';
 import BentoCard from '../components/BentoCard.astro';
+
+const avatars = [
+  { initials: 'A', bg: 'bg-sage-dark', text: 'text-white' },
+  { initials: 'R', bg: 'bg-charcoal', text: 'text-white' },
+  { initials: 'S', bg: 'bg-sage-light', text: 'text-charcoal' },
+  { initials: 'M', bg: 'bg-cream-deeper', text: 'text-charcoal' },
+];
+
+const classCards = [
+  {
+    href: '/class-9',
+    label: 'Class 9',
+    emoji: '📗',
+    subtitle: 'Foundation Year',
+    tagline: 'Build unbreakable basics in Maths & Science',
+    subjects: ['Mathematics', 'Science'],
+    accentText: 'text-sage-light',
+    borderHover: 'hover:border-sage/40',
+  },
+  {
+    href: '/class-10',
+    label: 'Class 10',
+    emoji: '📘',
+    subtitle: 'Board Excellence',
+    tagline: 'Score 95+ in your CBSE Board exams',
+    subjects: ['Mathematics', 'Science'],
+    accentText: 'text-blue-300',
+    borderHover: 'hover:border-blue-500/40',
+  },
+  {
+    href: '/class-11',
+    label: 'Class 11',
+    emoji: '📙',
+    subtitle: 'JEE Foundation',
+    tagline: 'The year that defines your JEE trajectory',
+    subjects: ['Physics', 'Chemistry', 'Maths'],
+    accentText: 'text-amber-300',
+    borderHover: 'hover:border-amber-500/40',
+  },
+  {
+    href: '/class-12',
+    label: 'Class 12',
+    emoji: '📕',
+    subtitle: 'Boards + JEE',
+    tagline: 'Dual-track to crack Boards and JEE both',
+    subjects: ['Physics', 'Chemistry', 'Maths'],
+    accentText: 'text-red-300',
+    borderHover: 'hover:border-red-500/40',
+  },
+];
+
+const approachSteps = [
+  {
+    step: '01',
+    icon: '💡',
+    title: 'Concept First',
+    body: 'We never rush to problem-solving. Every topic begins with deep conceptual understanding — using diagrams, real-world analogies, and first-principles thinking.',
+  },
+  {
+    step: '02',
+    icon: '✏️',
+    title: 'Practice Deep',
+    body: 'Hundreds of graded problems, from NCERT basics to JEE Advanced level. Students practice in class and receive curated homework assignments each day.',
+  },
+  {
+    step: '03',
+    icon: '📊',
+    title: 'Test & Review',
+    body: 'Weekly topic-wise tests followed by a thorough review session. Students analyze their own mistakes — building exam temperament and speed.',
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'I went from struggling with Trigonometry to scoring 96 in my Class 10 Boards. The faculty breaks down every concept with such clarity — no student gets left behind.',
+    name: 'Aarav Sharma',
+    detail: 'Class 10 · CBSE 2024 · Scored 96/100 in Mathematics',
+    initials: 'AS',
+  },
+  {
+    quote: 'The weekly test system is a game-changer. By the time JEE Mains arrived, I had already done 30+ full tests. Ascend Academy genuinely prepares you for the pressure.',
+    name: 'Ritika Mehra',
+    detail: 'Class 12 · JEE Mains 2024 · AIR 4,200',
+    initials: 'RM',
+  },
+  {
+    quote: 'Small batches mean every question gets answered. I used to be too shy to ask doubts. Here, teachers notice if you are confused even before you raise your hand.',
+    name: 'Sahil Verma',
+    detail: 'Class 11 · Currently preparing for JEE 2025',
+    initials: 'SV',
+  },
+];
+
+const contactItems = [
+  { icon: '📍', title: 'Campus Address', detail: '12-B, Sector 14, Near Model Town, Delhi – 110009' },
+  { icon: '📞', title: 'Phone', detail: '+91 98765 43210' },
+  { icon: '✉️', title: 'Email', detail: 'admissions@ascendacademy.in' },
+  { icon: '🕐', title: 'Office Hours', detail: 'Mon–Sat: 8 AM – 8 PM | Sunday: 9 AM – 1 PM' },
+];
 ---
 
 <BaseLayout title="Home" activePage="home">
+
   <!-- ── HERO ── -->
   <section class="relative min-h-screen flex items-center overflow-hidden bg-cream grain-overlay pt-20">
-    <!-- Dot Grid Background -->
-    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-dot-grid opacity-60 pointer-events-none" style="background-size: 28px 28px;"></div>
 
-    <!-- Floating geometric blobs -->
     <div class="absolute top-20 right-10 w-72 h-72 blob animate-float pointer-events-none"></div>
-    <div class="absolute bottom-20 left-10 w-48 h-48 blob animate-float-delayed pointer-events-none opacity-50"></div>
-    <div class="absolute top-1/3 left-1/4 w-24 h-24 blob pointer-events-none opacity-30"></div>
+    <div class="absolute bottom-20 left-10 w-48 h-48 blob animate-float-delayed pointer-events-none" style="opacity:0.5;"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full py-16 lg:py-0">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-        <!-- Left: Text Content -->
+        <!-- Left -->
         <div class="max-w-xl">
-          <!-- Badge -->
           <div class="inline-flex items-center gap-2.5 bg-white border border-cream-dark shadow-card px-4 py-2 rounded-full mb-7" data-animate="fade">
             <span class="relative flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-sage-dark"></span>
             </span>
-            <span class="font-grotesk text-xs font-600 text-charcoal">Classes Starting April 2nd, 2026 🗓️</span>
+            <span class="font-grotesk text-xs font-medium text-charcoal">Classes Starting April 2nd, 2026 🗓️</span>
           </div>
 
-          <!-- Headline -->
-          <h1 class="font-playfair font-900 text-charcoal leading-[1.05] mb-5" data-animate style="font-size: clamp(2.4rem, 5vw, 4.2rem);">
-            Where Curious Minds<br/>
-            Become <em class="text-sage-dark not-italic">Confident</em><br/>
+          <h1
+            class="font-playfair font-black text-charcoal leading-tight mb-5"
+            style="font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05;"
+            data-animate
+          >
+            Where Curious Minds<br />
+            Become <em class="text-sage-dark not-italic">Confident</em><br />
             Achievers
           </h1>
 
           <p class="font-dm text-lg text-charcoal-muted leading-relaxed mb-8 max-w-md" data-animate data-delay="100">
-            Offline coaching for Class 9–12 · JEE Mains & Advanced · CBSE Board Exam 10 & 12. Every student gets the attention they deserve.
+            Offline coaching for Class 9–12 · JEE Mains &amp; Advanced · CBSE Board Exam 10 &amp; 12.
+            Every student gets the attention they deserve.
           </p>
 
-          <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3" data-animate data-delay="200">
             <a
               href="/class-9"
-              class="font-grotesk font-600 text-base bg-sage-dark text-white px-7 py-3.5 rounded-full shadow-sage hover:bg-sage hover:shadow-none transition-all duration-200 inline-flex items-center gap-2 justify-center"
+              class="font-grotesk font-semibold text-base bg-sage-dark text-white px-7 py-3.5 rounded-full shadow-sage hover:bg-sage hover:shadow-none transition-all duration-200 inline-flex items-center gap-2 justify-center"
             >
               Explore Classes →
             </a>
             <a
               href="/#contact"
-              class="font-grotesk font-500 text-base text-charcoal border-2 border-charcoal/20 px-7 py-3.5 rounded-full hover:border-charcoal/50 hover:bg-charcoal/5 transition-all duration-200 text-center"
+              class="font-grotesk font-medium text-base text-charcoal border-2 border-charcoal/20 px-7 py-3.5 rounded-full hover:border-charcoal/50 hover:bg-charcoal/5 transition-all duration-200 text-center"
             >
               Talk to Us
             </a>
           </div>
 
-          <!-- Social proof mini-bar -->
+          <!-- Social proof -->
           <div class="mt-8 flex items-center gap-4" data-animate data-delay="300">
             <div class="flex -space-x-2">
-              {[0,1,2,3].map(i => (
-                <div class={`w-8 h-8 rounded-full border-2 border-cream flex items-center justify-center text-xs font-600 ${i===0?'bg-sage-dark text-white':i===1?'bg-charcoal text-white':i===2?'bg-sage-light text-charcoal-dark':'bg-cream-deeper text-charcoal'}`}>
-                  {['A','R','S','M'][i]}
+              {avatars.map(a => (
+                <div class={`w-8 h-8 rounded-full border-2 border-cream flex items-center justify-center text-xs font-semibold ${a.bg} ${a.text}`}>
+                  {a.initials}
                 </div>
               ))}
             </div>
             <div>
-              <p class="font-grotesk text-xs font-600 text-charcoal">500+ students</p>
+              <p class="font-grotesk text-xs font-semibold text-charcoal">500+ students</p>
               <p class="font-dm text-xs text-charcoal-muted">already enrolled for 2025–26</p>
             </div>
           </div>
         </div>
 
-        <!-- Right: Floating Bento Grid of Stats/Subjects -->
-        <div class="hidden lg:grid grid-cols-2 gap-3 relative" data-animate="slide-right" data-delay="200">
-          <!-- Floating card 1 -->
+        <!-- Right: Floating bento -->
+        <div class="hidden lg:grid grid-cols-2 gap-3" data-animate="slide-right" data-delay="200">
           <div class="bg-white rounded-2xl shadow-card p-5 card-lift border border-cream-dark col-span-2">
-            <p class="font-grotesk text-xs text-charcoal-muted uppercase tracking-widest font-500 mb-3">Subjects We Teach</p>
+            <p class="font-grotesk text-xs text-charcoal-muted uppercase tracking-widest font-medium mb-3">Subjects We Teach</p>
             <div class="flex flex-wrap gap-2">
               {['Mathematics', 'Physics', 'Chemistry', 'Biology', 'JEE Mains', 'JEE Advanced', 'CBSE Boards'].map(s => (
                 <span class="tag-pill">{s}</span>
@@ -87,26 +185,26 @@ import BentoCard from '../components/BentoCard.astro';
 
           <div class="bg-sage-dark rounded-2xl shadow-sage p-5 card-lift text-white">
             <div class="text-3xl mb-1">🏆</div>
-            <p class="font-playfair font-700 text-3xl">98%</p>
-            <p class="font-grotesk text-xs text-white/70 font-500 mt-1">Board Exam Pass Rate</p>
+            <p class="font-playfair font-bold text-3xl">98%</p>
+            <p class="font-grotesk text-xs text-white/70 font-medium mt-1">Board Exam Pass Rate</p>
           </div>
 
           <div class="bg-white rounded-2xl shadow-card p-5 card-lift border border-cream-dark">
             <div class="text-3xl mb-1">📐</div>
-            <p class="font-playfair font-700 text-3xl text-charcoal">Small</p>
-            <p class="font-grotesk text-xs text-charcoal-muted font-500 mt-1">Batch Sizes ≤ 15 students</p>
+            <p class="font-playfair font-bold text-3xl text-charcoal">Small</p>
+            <p class="font-grotesk text-xs text-charcoal-muted font-medium mt-1">Batches ≤ 15 students</p>
           </div>
 
           <div class="bg-charcoal rounded-2xl p-5 card-lift text-white">
             <div class="text-3xl mb-1">⏰</div>
-            <p class="font-playfair font-700 text-xl">Weekly Tests</p>
-            <p class="font-grotesk text-xs text-white/60 font-500 mt-1">+ Progress Reports</p>
+            <p class="font-playfair font-bold text-xl">Weekly Tests</p>
+            <p class="font-grotesk text-xs text-white/60 font-medium mt-1">+ Progress Reports</p>
           </div>
 
           <div class="bg-cream rounded-2xl p-5 card-lift border border-cream-dark">
             <div class="text-3xl mb-1">🎯</div>
-            <p class="font-playfair font-700 text-xl text-charcoal">JEE + Boards</p>
-            <p class="font-grotesk text-xs text-charcoal-muted font-500 mt-1">Dual-track system</p>
+            <p class="font-playfair font-bold text-xl text-charcoal">JEE + Boards</p>
+            <p class="font-grotesk text-xs text-charcoal-muted font-medium mt-1">Dual-track system</p>
           </div>
         </div>
       </div>
@@ -115,7 +213,7 @@ import BentoCard from '../components/BentoCard.astro';
     <!-- Bottom wave -->
     <div class="absolute bottom-0 left-0 right-0">
       <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#2C2C2C" opacity="1"/>
+        <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#2C2C2C" />
       </svg>
     </div>
   </section>
@@ -123,23 +221,21 @@ import BentoCard from '../components/BentoCard.astro';
   <!-- ── STATS BAR ── -->
   <StatsBar />
 
-  <!-- ── WHY CHOOSE US – Bento Grid ── -->
+  <!-- ── WHY CHOOSE US ── -->
   <section class="bg-cream py-20 lg:py-28 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-96 h-96 blob opacity-20 translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
-      <!-- Section header -->
       <div class="mb-12 max-w-xl" data-animate>
-        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Why Ascend Academy</span>
-        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2 leading-tight">
-          Not just a coaching.<br/>A <em class="text-sage-dark not-italic">complete system.</em>
+        <span class="font-grotesk text-xs font-semibold text-sage-dark uppercase tracking-widest">Why Ascend Academy</span>
+        <h2 class="font-playfair font-extrabold text-4xl lg:text-5xl text-charcoal mt-2 leading-tight">
+          Not just a coaching.<br />A <em class="text-sage-dark not-italic">complete system.</em>
         </h2>
       </div>
 
-      <!-- Bento Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <BentoCard
-          title="Safe & Secure Learning Environment"
+          title="Safe &amp; Secure Learning Environment"
           body="Our fully offline campus provides a distraction-free, CCTV-monitored environment where students feel secure, focused, and ready to absorb knowledge."
           iconPath='<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'
           variant="default"
@@ -153,14 +249,14 @@ import BentoCard from '../components/BentoCard.astro';
           delay="100"
         />
         <BentoCard
-          title="Weekly Tests & Progress Tracking"
+          title="Weekly Tests &amp; Progress Tracking"
           body="Every week, students sit for structured tests mirroring actual exam patterns. Detailed progress reports are shared with parents monthly."
           iconPath='<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'
           variant="dark"
           delay="200"
         />
         <BentoCard
-          title="JEE & Board Exam Focused Curriculum"
+          title="JEE &amp; Board Exam Focused Curriculum"
           body="Our curriculum is built backwards from the exam. Every concept taught is aligned to JEE Mains, JEE Advanced, or CBSE Board patterns."
           iconPath='<circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>'
           variant="sage"
@@ -175,7 +271,7 @@ import BentoCard from '../components/BentoCard.astro';
         />
         <BentoCard
           title="Small Batch Sizes for Better Clarity"
-          body="No 100-student lectures. Every class has ≤15 students ensuring every doubt is heard, every question is answered, every student progresses."
+          body="No 100-student lectures. Every class has 15 or fewer students ensuring every doubt is heard, every question answered, every student progresses."
           iconPath='<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>'
           variant="white"
           delay="500"
@@ -186,14 +282,14 @@ import BentoCard from '../components/BentoCard.astro';
 
   <!-- ── CLASSES OVERVIEW ── -->
   <section class="bg-charcoal py-20 lg:py-28 relative overflow-hidden">
-    <div class="absolute inset-0 bg-dot-grid bg-dot-grid opacity-5"></div>
+    <div class="absolute inset-0 bg-dot-grid opacity-5 pointer-events-none" style="background-size: 28px 28px;"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
       <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-4">
         <div data-animate>
-          <span class="font-grotesk text-xs font-600 text-sage-light uppercase tracking-widest">Our Programs</span>
-          <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-white mt-2 leading-tight">
-            Find your class.<br/>Find your edge.
+          <span class="font-grotesk text-xs font-semibold text-sage-light uppercase tracking-widest">Our Programs</span>
+          <h2 class="font-playfair font-extrabold text-4xl lg:text-5xl text-white mt-2 leading-tight">
+            Find your class.<br />Find your edge.
           </h2>
         </div>
         <p class="font-dm text-charcoal-muted text-base max-w-sm lg:text-right" data-animate data-delay="100">
@@ -202,51 +298,10 @@ import BentoCard from '../components/BentoCard.astro';
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          {
-            href: '/class-9',
-            label: 'Class 9',
-            emoji: '📗',
-            subtitle: 'Foundation Year',
-            tagline: 'Build unbreakable basics in Maths & Science',
-            subjects: ['Mathematics', 'Science'],
-            color: 'from-sage/20 to-sage/5',
-            accent: 'text-sage-light',
-          },
-          {
-            href: '/class-10',
-            label: 'Class 10',
-            emoji: '📘',
-            subtitle: 'Board Excellence',
-            tagline: 'Score 95+ in your CBSE Board exams',
-            subjects: ['Mathematics', 'Science'],
-            color: 'from-blue-900/30 to-blue-900/10',
-            accent: 'text-blue-300',
-          },
-          {
-            href: '/class-11',
-            label: 'Class 11',
-            emoji: '📙',
-            subtitle: 'JEE Foundation',
-            tagline: 'The year that defines your JEE trajectory',
-            subjects: ['Physics', 'Chemistry', 'Maths'],
-            color: 'from-amber-900/30 to-amber-900/10',
-            accent: 'text-amber-300',
-          },
-          {
-            href: '/class-12',
-            label: 'Class 12',
-            emoji: '📕',
-            subtitle: 'Boards + JEE',
-            tagline: 'Dual-track to crack Boards and JEE both',
-            subjects: ['Physics', 'Chemistry', 'Maths'],
-            color: 'from-red-900/30 to-red-900/10',
-            accent: 'text-red-300',
-          },
-        ].map((cls, i) => (
+        {classCards.map((cls, i) => (
           <a
             href={cls.href}
-            class={`group relative bg-gradient-to-br ${cls.color} border border-white/10 rounded-2xl p-6 card-lift hover:border-white/20 transition-all duration-300`}
+            class={`group relative bg-white/5 border border-white/10 rounded-2xl p-6 card-lift transition-all duration-300 ${cls.borderHover}`}
             data-animate
             data-delay={String(i * 100)}
           >
@@ -254,29 +309,25 @@ import BentoCard from '../components/BentoCard.astro';
               <span class="text-3xl">{cls.emoji}</span>
               <span class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
             </div>
 
-            <p class={`font-grotesk text-xs font-600 ${cls.accent} uppercase tracking-widest mb-1`}>{cls.subtitle}</p>
-            <h3 class="font-playfair font-700 text-2xl text-white mb-2">{cls.label}</h3>
+            <p class={`font-grotesk text-xs font-semibold ${cls.accentText} uppercase tracking-widest mb-1`}>{cls.subtitle}</p>
+            <h3 class="font-playfair font-bold text-2xl text-white mb-2">{cls.label}</h3>
             <p class="font-dm text-sm text-white/60 mb-4 leading-relaxed">{cls.tagline}</p>
 
             <div class="flex flex-wrap gap-1.5">
               {cls.subjects.map(s => (
-                <span class="font-grotesk text-xs font-500 text-white/50 bg-white/8 border border-white/10 px-2.5 py-1 rounded-full">{s}</span>
+                <span class="font-grotesk text-xs font-medium text-white/50 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">{s}</span>
               ))}
             </div>
 
-            <!-- Bottom CTA -->
-            <div class={`mt-5 flex items-center gap-1 ${cls.accent} font-grotesk text-xs font-600 group-hover:gap-2 transition-all duration-200`}>
+            <div class={`mt-5 flex items-center gap-1 ${cls.accentText} font-grotesk text-xs font-semibold group-hover:gap-2 transition-all duration-200`}>
               <span>Explore Program</span>
               <span>→</span>
             </div>
-
-            <!-- Left border on hover -->
-            <div class="absolute left-0 top-4 bottom-4 w-0.5 bg-white/0 group-hover:bg-white/30 rounded-full transition-all duration-300"></div>
           </a>
         ))}
       </div>
@@ -284,45 +335,25 @@ import BentoCard from '../components/BentoCard.astro';
   </section>
 
   <!-- ── OUR APPROACH ── -->
-  <section class="bg-cream py-20 lg:py-28 relative">
+  <section class="bg-cream py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="text-center mb-14" data-animate>
-        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Our Method</span>
-        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2">How we teach</h2>
-        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">A proven three-phase system that transforms understanding into exam-ready mastery.</p>
+        <span class="font-grotesk text-xs font-semibold text-sage-dark uppercase tracking-widest">Our Method</span>
+        <h2 class="font-playfair font-extrabold text-4xl lg:text-5xl text-charcoal mt-2">How we teach</h2>
+        <p class="font-dm text-charcoal-muted mt-3 max-w-md mx-auto">
+          A proven three-phase system that transforms understanding into exam-ready mastery.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
-        <!-- Connecting line (desktop) -->
-        <div class="hidden md:block absolute top-8 left-[calc(16.67%+1.5rem)] right-[calc(16.67%+1.5rem)] h-px bg-gradient-to-r from-sage-pale via-sage to-sage-pale z-0"></div>
-
-        {[
-          {
-            step: '01',
-            title: 'Concept First',
-            body: 'We never rush to problem-solving. Every topic begins with deep conceptual understanding — using diagrams, real-world analogies, and first-principles thinking.',
-            icon: '💡',
-          },
-          {
-            step: '02',
-            title: 'Practice Deep',
-            body: 'Hundreds of graded problems, from NCERT basics to JEE Advanced level. Students practice in class and receive curated homework assignments each day.',
-            icon: '✏️',
-          },
-          {
-            step: '03',
-            title: 'Test & Review',
-            body: 'Weekly topic-wise tests followed by a thorough review session. Students analyze their own mistakes — building exam temperament and speed.',
-            icon: '📊',
-          },
-        ].map((step, i) => (
-          <div class="relative z-10 text-center group" data-animate data-delay={String(i * 150)}>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {approachSteps.map((item, i) => (
+          <div class="text-center group" data-animate data-delay={String(i * 150)}>
             <div class="inline-flex w-16 h-16 rounded-2xl bg-white shadow-card border border-cream-dark items-center justify-center text-3xl mb-5 group-hover:shadow-sage transition-shadow duration-300 mx-auto">
-              {step.icon}
+              {item.icon}
             </div>
-            <div class="font-grotesk text-xs font-700 text-sage-dark uppercase tracking-widest mb-2">{step.step}</div>
-            <h3 class="font-playfair font-700 text-xl text-charcoal mb-3">{step.title}</h3>
-            <p class="font-dm text-sm text-charcoal-muted leading-relaxed">{step.body}</p>
+            <div class="font-grotesk text-xs font-bold text-sage-dark uppercase tracking-widest mb-2">{item.step}</div>
+            <h3 class="font-playfair font-bold text-xl text-charcoal mb-3">{item.title}</h3>
+            <p class="font-dm text-sm text-charcoal-muted leading-relaxed">{item.body}</p>
           </div>
         ))}
       </div>
@@ -331,61 +362,27 @@ import BentoCard from '../components/BentoCard.astro';
 
   <!-- ── TESTIMONIALS ── -->
   <section class="bg-cream-dark py-20 lg:py-24 relative overflow-hidden" id="about">
-    <div class="absolute top-0 left-0 right-0 h-px bg-cream-deeper"></div>
     <div class="absolute bottom-10 left-0 w-72 h-72 blob opacity-15 -translate-x-1/3 pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="text-center mb-12" data-animate>
-        <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Student Stories</span>
-        <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2">Results that speak</h2>
+        <span class="font-grotesk text-xs font-semibold text-sage-dark uppercase tracking-widest">Student Stories</span>
+        <h2 class="font-playfair font-extrabold text-4xl lg:text-5xl text-charcoal mt-2">Results that speak</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {[
-          {
-            quote: 'I went from struggling with Trigonometry to scoring 96 in my Class 10 Boards. The faculty breaks down every concept with such clarity — no student gets left behind.',
-            name: 'Aarav Sharma',
-            detail: 'Class 10 · CBSE 2024 · Scored 96/100 in Mathematics',
-            initials: 'AS',
-          },
-          {
-            quote: 'The weekly test system is a game-changer. By the time JEE Mains arrived, I had already done 30+ full tests. Ascend Academy genuinely prepares you for the pressure.',
-            name: 'Ritika Mehra',
-            detail: 'Class 12 · JEE Mains 2024 · AIR 4,200',
-            initials: 'RM',
-          },
-          {
-            quote: 'Small batches mean every question gets answered. I used to be too shy to ask doubts. Here, teachers notice if you're confused even before you raise your hand.',
-            name: 'Sahil Verma',
-            detail: 'Class 11 · Currently preparing for JEE 2025',
-            initials: 'SV',
-          },
-        ].map((t, i) => (
+        {testimonials.map((t, i) => (
           <div class="bg-white rounded-2xl p-7 card-lift border border-cream-dark relative" data-animate data-delay={String(i * 150)}>
-            <!-- Big quote mark -->
             <div class="font-playfair text-7xl text-sage-light leading-none absolute top-4 right-6 select-none opacity-60">"</div>
-
-            <p class="font-dm text-sm text-charcoal-light leading-relaxed mb-6 relative z-10">
-              {t.quote}
-            </p>
-
+            <p class="font-dm text-sm text-charcoal-light leading-relaxed mb-6 relative z-10">{t.quote}</p>
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-sage-dark flex items-center justify-center font-grotesk text-sm font-700 text-white">
+              <div class="w-10 h-10 rounded-full bg-sage-dark flex items-center justify-center font-grotesk text-sm font-bold text-white">
                 {t.initials}
               </div>
               <div>
-                <p class="font-grotesk text-sm font-600 text-charcoal">{t.name}</p>
+                <p class="font-grotesk text-sm font-semibold text-charcoal">{t.name}</p>
                 <p class="font-dm text-xs text-charcoal-muted">{t.detail}</p>
               </div>
-            </div>
-
-            <!-- Stars -->
-            <div class="absolute bottom-7 right-7 flex gap-0.5">
-              {[1,2,3,4,5].map(() => (
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="#7C9A7E">
-                  <path d="M6 1l1.35 2.73L10.5 4.27l-2.25 2.19.53 3.1L6 8.1 3.22 9.56l.53-3.1L1.5 4.27l3.15-.54L6 1z"/>
-                </svg>
-              ))}
             </div>
           </div>
         ))}
@@ -393,31 +390,26 @@ import BentoCard from '../components/BentoCard.astro';
     </div>
   </section>
 
-  <!-- ── CONTACT SECTION ── -->
+  <!-- ── CONTACT ── -->
   <section class="bg-cream py-20 lg:py-28" id="contact">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Left: Info -->
+
         <div data-animate>
-          <span class="font-grotesk text-xs font-600 text-sage-dark uppercase tracking-widest">Get In Touch</span>
-          <h2 class="font-playfair font-800 text-4xl lg:text-5xl text-charcoal mt-2 mb-5 leading-tight">
-            Have questions?<br/>We're right here.
+          <span class="font-grotesk text-xs font-semibold text-sage-dark uppercase tracking-widest">Get In Touch</span>
+          <h2 class="font-playfair font-extrabold text-4xl lg:text-5xl text-charcoal mt-2 mb-5 leading-tight">
+            Have questions?<br />We're right here.
           </h2>
           <p class="font-dm text-charcoal-muted text-base leading-relaxed mb-8 max-w-sm">
             Visit us at our campus, call us, or send a message. Our admissions team responds within 2 hours on working days.
           </p>
 
           <div class="space-y-4">
-            {[
-              { icon: '📍', title: 'Campus Address', detail: '12-B, Sector 14, Near Model Town, Delhi – 110009' },
-              { icon: '📞', title: 'Phone', detail: '+91 98765 43210' },
-              { icon: '✉️', title: 'Email', detail: 'admissions@ascendacademy.in' },
-              { icon: '🕐', title: 'Office Hours', detail: 'Mon–Sat: 8 AM – 8 PM | Sunday: 9 AM – 1 PM' },
-            ].map(item => (
+            {contactItems.map(item => (
               <div class="flex items-start gap-4">
                 <div class="w-10 h-10 rounded-xl bg-sage-faint flex items-center justify-center text-lg flex-shrink-0">{item.icon}</div>
                 <div>
-                  <p class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-widest">{item.title}</p>
+                  <p class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-widest">{item.title}</p>
                   <p class="font-dm text-sm text-charcoal mt-0.5">{item.detail}</p>
                 </div>
               </div>
@@ -425,43 +417,30 @@ import BentoCard from '../components/BentoCard.astro';
           </div>
         </div>
 
-        <!-- Right: Contact Form -->
         <div class="bg-white rounded-3xl p-8 shadow-card border border-cream-dark" data-animate data-delay="200">
-          <h3 class="font-playfair font-700 text-2xl text-charcoal mb-1">Book a Free Counselling Session</h3>
+          <h3 class="font-playfair font-bold text-2xl text-charcoal mb-1">Book a Free Counselling Session</h3>
           <p class="font-dm text-sm text-charcoal-muted mb-6">We'll understand your goals and build a custom study plan.</p>
 
           <div class="space-y-4">
             <div class="grid grid-cols-2 gap-3">
               <div>
-                <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">First Name</label>
-                <input
-                  type="text"
-                  placeholder="Rahul"
-                  class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all"
-                />
+                <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">First Name</label>
+                <input type="text" placeholder="Rahul" class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage transition-all" />
               </div>
               <div>
-                <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">Last Name</label>
-                <input
-                  type="text"
-                  placeholder="Sharma"
-                  class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all"
-                />
+                <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">Last Name</label>
+                <input type="text" placeholder="Sharma" class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage transition-all" />
               </div>
             </div>
 
             <div>
-              <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">Phone Number</label>
-              <input
-                type="tel"
-                placeholder="+91 99999 00000"
-                class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all"
-              />
+              <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">Phone Number</label>
+              <input type="tel" placeholder="+91 99999 00000" class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage transition-all" />
             </div>
 
             <div>
-              <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">Current Class</label>
-              <select class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all appearance-none">
+              <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">Current Class</label>
+              <select class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal focus:outline-none focus:border-sage transition-all appearance-none">
                 <option value="">Select class...</option>
                 <option>Class 9</option>
                 <option>Class 10</option>
@@ -472,8 +451,8 @@ import BentoCard from '../components/BentoCard.astro';
             </div>
 
             <div>
-              <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">Goal</label>
-              <select class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all appearance-none">
+              <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">Goal</label>
+              <select class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal focus:outline-none focus:border-sage transition-all appearance-none">
                 <option value="">What are you targeting?</option>
                 <option>CBSE Board Exam Excellence</option>
                 <option>JEE Mains</option>
@@ -483,24 +462,15 @@ import BentoCard from '../components/BentoCard.astro';
             </div>
 
             <div>
-              <label class="font-grotesk text-xs font-600 text-charcoal-muted uppercase tracking-wide block mb-1.5">Message (Optional)</label>
-              <textarea
-                rows="3"
-                placeholder="Tell us anything specific about your goals or challenges..."
-                class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage focus:ring-2 focus:ring-sage/20 transition-all resize-none"
-              ></textarea>
+              <label class="font-grotesk text-xs font-semibold text-charcoal-muted uppercase tracking-wide block mb-1.5">Message (Optional)</label>
+              <textarea rows="3" placeholder="Tell us anything specific about your goals or challenges..." class="w-full bg-cream rounded-xl border border-cream-dark px-4 py-3 font-dm text-sm text-charcoal placeholder:text-charcoal-muted/50 focus:outline-none focus:border-sage transition-all resize-none"></textarea>
             </div>
 
-            <button
-              type="button"
-              class="w-full font-grotesk font-600 text-base bg-sage-dark text-white py-4 rounded-xl hover:bg-sage transition-colors duration-200 shadow-sage hover:shadow-none"
-            >
+            <button type="button" class="w-full font-grotesk font-semibold text-base bg-sage-dark text-white py-4 rounded-xl hover:bg-sage transition-colors duration-200 shadow-sage hover:shadow-none">
               Book Free Session →
             </button>
 
-            <p class="font-dm text-xs text-center text-charcoal-muted">
-              No commitment required. We'll reach out within 2 hours.
-            </p>
+            <p class="font-dm text-xs text-center text-charcoal-muted">No commitment required. We will reach out within 2 hours.</p>
           </div>
         </div>
       </div>
@@ -514,4 +484,5 @@ import BentoCard from '../components/BentoCard.astro';
     btnLabel="Enroll Now"
     btnHref="/#contact"
   />
+
 </BaseLayout>
