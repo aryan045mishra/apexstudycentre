@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="gradA" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E61C3C" />
+      <stop offset="100%" stop-color="#832A8F" />
+    </linearGradient>
+    
+    <linearGradient id="gradS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="100%" stop-color="#1C2541" />
+    </linearGradient>
+
+    <linearGradient id="gradC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5EBA46" />
+      <stop offset="100%" stop-color="#00A79D" />
+    </linearGradient>
+    
+    <linearGradient id="gradSwoosh" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0072BC" />
+      <stop offset="100%" stop-color="#29ABE2" />
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="120" fill="#F8FAFC" />
+  
+  <path d="M 90 280 C 150 180, 300 120, 420 290" fill="none" stroke="url(#gradSwoosh)" stroke-width="45" stroke-linecap="round" />
+
+  <g font-family="Arial, system-ui, sans-serif" font-weight="900" font-style="italic" font-size="220" text-anchor="middle">
+    <text x="140" y="340" fill="url(#gradA)">A</text>
+    <text x="256" y="340" fill="url(#gradS)">S</text>
+    <text x="372" y="340" fill="url(#gradC)">C</text>
+  </g>
+</svg>
